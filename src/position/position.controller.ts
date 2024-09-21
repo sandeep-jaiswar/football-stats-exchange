@@ -1,6 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { PositionService } from './position.service';
-import { CreatePositionDto } from './dto/create-position.dto';
 import { UpdatePositionDto } from './dto/update-position.dto';
 
 @Controller('position')
@@ -8,8 +15,8 @@ export class PositionController {
   constructor(private readonly positionService: PositionService) {}
 
   @Post()
-  create(@Body() createPositionDto: CreatePositionDto) {
-    return this.positionService.create(createPositionDto);
+  create() {
+    return this.positionService.create();
   }
 
   @Get()
@@ -23,7 +30,10 @@ export class PositionController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePositionDto: UpdatePositionDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updatePositionDto: UpdatePositionDto,
+  ) {
     return this.positionService.update(+id, updatePositionDto);
   }
 

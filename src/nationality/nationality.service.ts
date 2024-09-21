@@ -1,14 +1,15 @@
 import { Injectable } from '@nestjs/common';
+import { UpdateNationalityDto } from './dto/update-nationality.dto';
 import puppeteer from 'puppeteer';
+import { Nationality } from './entities/nationality.entity';
 import { Repository } from 'typeorm';
-import { Team } from './entities/team.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
-export class TeamService {
+export class NationalityService {
   constructor(
-    @InjectRepository(Team)
-    private readonly repository: Repository<Team>,
+    @InjectRepository(Nationality)
+    private readonly repository: Repository<Nationality>,
   ) {}
   async create() {
     const browser = await puppeteer.launch();
@@ -16,15 +17,15 @@ export class TeamService {
     await page.goto('https://fbref.com/en/comps/9/stats/Premier-League-Stats');
 
     try {
-      const teams = await page.$$eval(
-        '#switcher_stats_squads_standard  .current table tbody tr th[data-stat="team"] a',
+      const nations = await page.$$eval(
+        '#div_stats_standard table tbody tr td[data-stat="nationality"] a',
         (elements) => {
           return elements.map((element) => {
-            return element.textContent;
+            return element.textContent.split(' ')[1];
           });
         },
       );
-      return await teams.forEach(async (name) => {
+      return await [...new Set(nations)].forEach(async (name) => {
         await this.repository.save({
           name,
         });
@@ -40,19 +41,15 @@ export class TeamService {
     return await this.repository.find();
   }
 
-  async findOneById(id: number) {
-    return await this.repository.findOne({
-      where: {
-        id,
-      },
-    });
+  findOne(id: number) {
+    return `This action returns a #${id} nationality`;
   }
 
-  async findOneByName(name: string) {
-    return await this.repository.findOne({
-      where: {
-        name,
-      },
-    });
+  update(id: number, updateNationalityDto: UpdateNationalityDto) {
+    return `This action updates a #${id} nationality`;
+  }
+
+  remove(id: number) {
+    return `This action removes a #${id} nationality`;
   }
 }
