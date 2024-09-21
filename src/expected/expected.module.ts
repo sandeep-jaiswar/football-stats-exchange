@@ -8,5 +8,6 @@ import { Expected } from './entities/expected.entity';
   imports: [TypeOrmModule.forFeature([Expected])],
   controllers: [ExpectedController],
   providers: [ExpectedService],
+  exports: [ExpectedService],
 })
 export class ExpectedModule {}

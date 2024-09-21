@@ -17,7 +17,7 @@ export class Per90MinutesController {
 
   @Post()
   create(@Body() createPer90MinuteDto: CreatePer90MinuteDto) {
-    return this.per90MinutesService.create(createPer90MinuteDto);
+    return this.per90MinutesService.create();
   }
 
   @Get()

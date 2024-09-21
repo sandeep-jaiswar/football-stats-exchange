@@ -8,7 +8,6 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ProgressionService } from './progression.service';
-import { CreateProgressionDto } from './dto/create-progression.dto';
 import { UpdateProgressionDto } from './dto/update-progression.dto';
 
 @Controller('progression')
@@ -16,8 +15,8 @@ export class ProgressionController {
   constructor(private readonly progressionService: ProgressionService) {}
 
   @Post()
-  create(@Body() createProgressionDto: CreateProgressionDto) {
-    return this.progressionService.create(createProgressionDto);
+  create() {
+    return this.progressionService.create();
   }
 
   @Get()

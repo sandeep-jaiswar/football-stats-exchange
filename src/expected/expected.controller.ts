@@ -17,7 +17,7 @@ export class ExpectedController {
 
   @Post()
   create(@Body() createExpectedDto: CreateExpectedDto) {
-    return this.expectedService.create(createExpectedDto);
+    return this.expectedService.create();
   }
 
   @Get()

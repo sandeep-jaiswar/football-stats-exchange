@@ -17,7 +17,7 @@ export class PerformanceController {
 
   @Post()
   create(@Body() createPerformanceDto: CreatePerformanceDto) {
-    return this.performanceService.create(createPerformanceDto);
+    return this.performanceService.create();
   }
 
   @Get()

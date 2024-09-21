@@ -8,5 +8,6 @@ import { Progression } from './entities/progression.entity';
   imports: [TypeOrmModule.forFeature([Progression])],
   controllers: [ProgressionController],
   providers: [ProgressionService],
+  exports: [ProgressionService],
 })
 export class ProgressionModule {}

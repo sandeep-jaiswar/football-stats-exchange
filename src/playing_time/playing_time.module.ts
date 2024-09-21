@@ -8,5 +8,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   imports: [TypeOrmModule.forFeature([PlayingTime])],
   controllers: [PlayingTimeController],
   providers: [PlayingTimeService],
+  exports: [PlayingTimeService],
 })
 export class PlayingTimeModule {}

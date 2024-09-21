@@ -8,5 +8,6 @@ import { Performance } from './entities/performance.entity';
   imports: [TypeOrmModule.forFeature([Performance])],
   controllers: [PerformanceController],
   providers: [PerformanceService],
+  exports: [PerformanceService],
 })
 export class PerformanceModule {}
