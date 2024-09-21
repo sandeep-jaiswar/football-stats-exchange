@@ -6,6 +6,7 @@ import { TeamModule } from './team/team.module';
 import { join } from 'path';
 import { PositionModule } from './position/position.module';
 import { NationalityModule } from './nationality/nationality.module';
+import { PlayerModule } from './player/player.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { NationalityModule } from './nationality/nationality.module';
     TeamModule,
     PositionModule,
     NationalityModule,
+    PlayerModule,
   ],
   controllers: [AppController],
   providers: [AppService],

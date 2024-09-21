@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Player } from 'src/player/entities/player.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Position {
@@ -9,4 +10,7 @@ export class Position {
     unique: true,
   })
   name: string;
+
+  @OneToMany(() => Player, (player) => player.nationality)
+  players: Player[];
 }
