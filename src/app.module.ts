@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TeamModule } from './team/team.module';
 import { join } from 'path';
+import { NationModule } from './nation/nation.module';
+import { PositionModule } from './position/position.module';
 
 @Module({
   imports: [
@@ -17,8 +19,11 @@ import { join } from 'path';
       entities: [join(__dirname, '**', '*.entity.{ts,js}')],
       synchronize: true,
       autoLoadEntities: true,
+      logging: true,
     }),
     TeamModule,
+    NationModule,
+    PositionModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -27,8 +27,9 @@
     "@nestjs/typeorm": "^10.0.2",
     "football-stats-exchange": "file:",
     "mysql2": "^3.11.3",
+    "puppeteer": "^23.4.0",
     "puppeteer-core": "^23.4.0",
-    "reflect-metadata": "^0.1.13",
+    "reflect-metadata": "^0.1.14",
     "rxjs": "^7.8.1",
     "typeorm": "^0.3.20"
   },
